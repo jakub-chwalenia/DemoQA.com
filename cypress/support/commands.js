@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import { basePage } from "../pageObjects/basePage"
+
+Cypress.Commands.add('OpenHomePage', () => {
+    
+    cy.visit('/')
+    cy.url({ log: true})
+    basePage.pageAddressContains('demoqa.com') // TODO env variable
+    basePage.pageTitleContains('ToolsQA')    
+    basePage.logInfo('--DemoQA main page--')
+})    
