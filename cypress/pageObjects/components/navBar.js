@@ -1,9 +1,41 @@
 export class NavBar {
 
-// TODO class="element-list collapse" => class="element-list collapse show"
-// TODO Please select an item from left to start practice.
-// TODO #app > div > div > div.pattern-backgound.playgound-header > div => contains ".."
+    pageHeader(elementName) {
+        
+        cy.get('[class="pattern-backgound playgound-header"]')
+            .children()
+            .contains(elementName)
+        return this
+    }
+
+    // side navbar elements:
+
+    navBarMenu(elementName) {
+
+        cy.get('.left-pannel')
+            .children()
+            .contains(elementName)
+        return this
+    }
+
+    submenuSelection(submenu) {
+
+        cy.get('[class="element-list collapse show"]')
+            .children()
+            .contains(submenu)
+            .should('be.visible')
+            .click({force: true})
+        return this
+    }
+
+    submenuActiveCheck(submenu) {
+
+        cy.get('[class="btn btn-light active"]')
+            .children()
+            .contains(submenu)
+        return this
+    }
 
 }
 
-const navBar = new NavBar()
+export const navBar = new NavBar()

@@ -6,10 +6,10 @@
   "scripts": {},
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "cypress": "^9.6.0"
-  },
   "dependencies": {
     "prettier": "^2.6.2"
+  },
+  "devDependencies": {
+    "cypress": "^9.6.0"
   }
 }
