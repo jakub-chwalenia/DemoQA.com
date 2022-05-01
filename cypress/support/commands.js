@@ -25,7 +25,9 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import { basePage } from "../pageObjects/basePage"
+import { navBar } from "../pageObjects/components/navBar"
 import { elementsPage } from "../pageObjects/pages/elementsPage"
+import { homePage } from "../pageObjects/pages/homePage"
 
 Cypress.Commands.add('OpenHomePage', () => {
     
@@ -34,9 +36,10 @@ Cypress.Commands.add('OpenHomePage', () => {
     basePage.pageAddressContains('demoqa.com') // TODO env variable
     basePage.pageTitleContains('ToolsQA')    
     basePage.logInfo('--DemoQA main page--')
+
 })
 
-Cypress.Commands.add('TextBoxFormHandling', () => {
+Cypress.Commands.add('ElementsTextBoxFormHandling', () => {
 
     cy.fixture('textBoxFormData.json').then( credentials => {
       
@@ -46,7 +49,39 @@ Cypress.Commands.add('TextBoxFormHandling', () => {
         elementsPage.permanentAddress(credentials.permanentAddress)
         elementsPage.submitButton()
 
-        basePage.logInfo('--Text Box form submitted--')
+    basePage.logInfo('--Text Box form submitted--')
         
     })
 })
+
+Cypress.Commands.add('ElementsTextBoxSummaryCheck', () => {
+
+    cy.fixture('textBoxFormData.json').then( credentials => {
+        
+        cy.get('#output')
+            .should('be.visible')
+            .children()
+            .should('contain.text', credentials.fullName)
+            .should('contain.text', credentials.email)
+            .should('contain.text', credentials.currentAddress)
+            .should('contain.text', credentials.permanentAddress)
+
+    basePage.logInfo('--Text Box summary checked--')
+
+    })
+})
+
+// TODO: command to save all elements to JSON file, expand / collapse selected only checkboxes
+// main groups: Desktop / Documents / Downloads
+// "You have selected: ..."
+
+Cypress.Commands.add('ElementsCheckBoxData', () => {
+
+    // TODO
+    cy.fixture('checkBoxData.json').then( data => {
+        
+        cy.log(data)
+    })
+})
+
+//

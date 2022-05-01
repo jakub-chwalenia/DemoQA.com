@@ -24,7 +24,8 @@ export class ElementsPage {
         cy.get('#userEmail')
             .should('have.attr', 'placeholder')
             .and('equal', 'name@example.com')
-            .type(userEmail)
+        cy.get('#userEmail')
+            .type(userEmail, {force: true})
         return this
     }
 
@@ -33,7 +34,8 @@ export class ElementsPage {
         cy.get('#currentAddress')
             .should('have.attr', 'placeholder')
             .and('equal', 'Current Address')
-            .type(currentAddress)
+        cy.get('#currentAddress')
+            .type(currentAddress, {force: true})
         return this
     }
 
@@ -41,7 +43,8 @@ export class ElementsPage {
 
         cy.get('#permanentAddress')
             .should('not.have.attr', 'placeholder')
-            .type(permanentAddress)
+        cy.get('#permanentAddress')
+            .type(permanentAddress, {force: true})
         return this
     }
 
@@ -53,30 +56,34 @@ export class ElementsPage {
         return this
     }
 
-    formSummaryCheck(fullName, userEmail, currentAddress, permanentAddress) {
+    checkBoxWrapper() {
 
-        cy.get('#output')
+        cy.get('.check-box-tree-wrapper')
             .should('be.visible')
-            .children()
-            .should('have.text', fullName)
-            .should('have.text', userEmail)
-            .should('have.text', currentAddress)
-            .should('have.text', permanentAddress)
         return this
     }
 
-    textBoxFormInput() {
+    checkBoxTreeElements() {
 
-        cy.fixture('textBoxFormData.json').then( credentials => {
-      
-            elementsPage.fullName(credentials.fullName)
-            elementsPage.userEmail(credentials.email)
-            elementsPage.currentAddress(credentials.currentAddress)
-            elementsPage.permanentAddress(credentials.permanentAddress)
-            elementsPage.submitButton()
-            
-        })
+        cy.get('[class="rct-node rct-node-parent rct-node-expanded"]')
+            .children()
+        cy.get('#tree-node > ol > li > ol')
+            .children()
+        cy.get('.rct-node')
+            .children()
+        return this
+    }
 
+    expandAllButton() {
+
+        //TODO
+        cy.get('button.rct-option.rct-option-expand-all').click()
+        return this
+    }
+
+    collapseAllButton() {
+
+        cy.get('button.rct-option.rct-option-collapse-all').click()
         return this
     }
 

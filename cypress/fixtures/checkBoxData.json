@@ -1,0 +1,13 @@
+{
+
+    "Desktop": ["Notes, Commands"],
+
+    "Documents": {
+
+        "WorkSpace": ["React", "Angular", "Vue"],
+        "Office": ["Public", "Private", "Classified", "General"]
+    },
+
+    "Downloads": ["Word File.doc", "Excel File.doc"]
+
+}
