@@ -87,6 +87,38 @@ export class ElementsPage {
         return this
     }
 
+    // yes, impressive or no
+    radioButtonSection(radioValue) {
+
+        // TODO
+        cy.contains('Do you like the site?')
+            .parent()
+            .children()
+            .find(`#${radioValue}Radio`)
+            .check({force: true})
+            .then(() => {
+
+                if(radioValue !== 'no') {
+                    
+                    const capitalizedRadio = radioValue.charAt(0).toUpperCase() + radioValue.substring(1)
+                    cy.contains(`You have selected ${capitalizedRadio}`)
+                        .should('be.visible')
+                } else {
+
+                    cy.contains(`You have selected ${radioValue.charAt(0).toUpperCase()}` + radioValue.substring(1))
+                        .should('not.exist')
+                }
+            })
+        return this
+
+    }
+
+    webTable() {
+
+        cy.get('.rt-table')
+            .should('be.visible')
+    }
+
 }
 
 export const elementsPage = new ElementsPage()

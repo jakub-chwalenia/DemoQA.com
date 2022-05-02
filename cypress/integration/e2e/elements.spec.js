@@ -28,23 +28,8 @@ describe('DemoQA: Elements', () => {
 
     it('Elements: Text Box', () => {
 
-        const card = 'Elements'
-        const group = 'Text Box'
-
-        homePage.cardSelection(card)
-        navBar.pageHeader(card)
-
-        cy.contains('Please select an item from left to start practice').should('be.visible')
-
-        navBar.navBarMenu(card)
-        navBar.submenuSelection(group)
-
-        navBar.pageHeader(group)
-        basePage.pageAddressContains('text-box')
-
-        navBar.submenuActiveCheck(group)
-
-        // Elements: Text Box: Form
+        basePage.navBarMenuNavigation('Elements', 'Text Box', 'text-box')
+        
         elementsPage.formContainer()
         
         cy.ElementsTextBoxFormHandling()
@@ -54,21 +39,7 @@ describe('DemoQA: Elements', () => {
 
     it('Elements: Check Box', () => {
 
-        const card = 'Elements'
-        const group = 'Check Box'
-
-        homePage.cardSelection(card)
-        navBar.pageHeader(card)
-
-        cy.contains('Please select an item from left to start practice').should('be.visible')
-
-        navBar.navBarMenu(card)
-        navBar.submenuSelection(group)
-
-        navBar.pageHeader(group)
-        basePage.pageAddressContains('checkbox')
-
-        // <--selected-->
+        basePage.navBarMenuNavigation('Elements', 'Check Box', 'checkbox')
 
         elementsPage.checkBoxWrapper()
         
@@ -82,7 +53,26 @@ describe('DemoQA: Elements', () => {
 
     it('Elements: Radio Button', () => {
 
-        basePage.navBarMenuNavigation('Elements', 'Check Box', 'checkbox')
+        basePage.navBarMenuNavigation('Elements', 'Radio Button', 'radio-button')
+
+        elementsPage.radioButtonSection('yes')
+        elementsPage.radioButtonSection('impressive')
+        elementsPage.radioButtonSection('no')
+
+    })
+
+    it('Elements: Web Tables', () => {
+
+        // TODO
+        // count rows
+        // verify table data
+        // add table data
+        // delete & modify data
+        // use search
+        // change number of rows displayed
+        // sort table
+        // work with columns by name (!)
+        
     })
 
 

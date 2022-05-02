@@ -1,0 +1,34 @@
+{
+
+    "id1": {
+
+        "firstName": "Cierra",
+        "lastName": "Vega",
+        "age": "39",
+        "email": "cierra@example.com",
+        "salary": "10000",
+        "department": "Insurance"
+    },
+
+    "id2": {
+
+        "firstName": "Alden",
+        "lastName": "Cantrell",
+        "age": "45",
+        "email": "alden@example.com",
+        "salary": "12000",
+        "department": "Compliance"
+    },
+
+    "id3": {
+
+        "firstName": "Kierra",
+        "lastName": "Gentry",
+        "age": "29",
+        "email": "kierra@example.com",
+        "salary": "2000",
+        "department": "Legal"
+    }
+
+
+}

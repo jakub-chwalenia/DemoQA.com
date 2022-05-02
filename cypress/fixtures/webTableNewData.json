@@ -1,0 +1,23 @@
+{
+
+    "id4": {
+
+        "firstName": "Mace",
+        "lastName": "Kubu",
+        "age": "35",
+        "email": "macekubu@example.com",
+        "salary": "15000",
+        "department": "IT"
+    },
+
+    "id5": {
+
+        "firstName": "Crazy",
+        "lastName": "Frog",
+        "age": "35",
+        "email": "crazyfrog@example.com",
+        "salary": "18000",
+        "department": "Marketing"
+    }
+
+}
