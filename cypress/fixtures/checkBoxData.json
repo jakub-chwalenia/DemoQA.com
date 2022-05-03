@@ -1,13 +1,33 @@
 {
 
-    "Desktop": ["Notes, Commands"],
+    "Desktop": {
+        
+        "Notes": "notes",
+        "Commands": "commands"
+    },
 
     "Documents": {
 
-        "WorkSpace": ["React", "Angular", "Vue"],
-        "Office": ["Public", "Private", "Classified", "General"]
+        "WorkSpace": {
+
+            "React": "react",
+            "Angular": "angular",
+            "Vue": "vue"
+        },
+        
+        "Office": {
+
+            "Public": "public",
+            "Private": "private",
+            "Classified": "classified",
+            "General": "general"
+        }
     },
 
-    "Downloads": ["Word File.doc", "Excel File.doc"]
+    "Downloads": {
+
+        "Word File.doc": "wordFile",
+        "Excel File.doc": "excelFile"
+    }
 
 }

@@ -35,6 +35,8 @@ describe('DemoQA: Elements', () => {
         cy.ElementsTextBoxFormHandling()
         cy.ElementsTextBoxSummaryCheck()
 
+        elementsPage.formContainerWithin()
+
     })
 
     it('Elements: Check Box', () => {
@@ -44,10 +46,16 @@ describe('DemoQA: Elements', () => {
         elementsPage.checkBoxWrapper()
         
         elementsPage.expandAllButton()
-        elementsPage.checkBoxTreeElements()
+        elementsPage.checkBoxTreeElementsSelect('Downloads')
+        elementsPage.checkboxInvoke()
+        elementsPage.checkBoxTreeElementsForEach()
         elementsPage.collapseAllButton()
 
         cy.ElementsCheckBoxData()
+
+
+        // custom function to select checkboxes only for given element + check if selected (+ parent)
+        // find checkboxes for values from JSON
 
     })
 
@@ -58,6 +66,8 @@ describe('DemoQA: Elements', () => {
         elementsPage.radioButtonSection('yes')
         elementsPage.radioButtonSection('impressive')
         elementsPage.radioButtonSection('no')
+
+        // TODO: 'invoke' to change state of button
 
     })
 
