@@ -26,7 +26,7 @@ describe('DemoQA: Elements', () => {
         
     })
 
-    it('Elements: Text Box', () => {
+    it.skip('Elements: Text Box', () => {
 
         basePage.navBarMenuNavigation('Elements', 'Text Box', 'text-box')
         
@@ -39,7 +39,7 @@ describe('DemoQA: Elements', () => {
 
     })
 
-    it('Elements: Check Box', () => {
+    it.skip('Elements: Check Box', () => {
 
         basePage.navBarMenuNavigation('Elements', 'Check Box', 'checkbox')
 
@@ -53,13 +53,9 @@ describe('DemoQA: Elements', () => {
 
         cy.ElementsCheckBoxData()
 
-
-        // custom function to select checkboxes only for given element + check if selected (+ parent)
-        // find checkboxes for values from JSON
-
     })
 
-    it('Elements: Radio Button', () => {
+    it.skip('Elements: Radio Button', () => {
 
         basePage.navBarMenuNavigation('Elements', 'Radio Button', 'radio-button')
 
@@ -67,21 +63,30 @@ describe('DemoQA: Elements', () => {
         elementsPage.radioButtonSection('impressive')
         elementsPage.radioButtonSection('no')
 
-        // TODO: 'invoke' to change state of button
-
     })
 
     it('Elements: Web Tables', () => {
 
+        basePage.navBarMenuNavigation('Elements', 'Web Tables', 'webtables')
+
         // TODO
         // count rows
-        // verify table data
-        // add table data
+        // verify column names
+        // verify table data (based on JSON)
+        // add table data (based on JSON) => dynamic window
         // delete & modify data
         // use search
-        // change number of rows displayed
         // sort table
         // work with columns by name (!)
+        // findRow function
+
+       elementsPage.webTableWrapper()
+
+       // select numbers of rows to be diaplayed and count visible rows (inclidung empty ones)
+       elementsPage.webTableRowCount(20)
+
+       elementsPage.webTableRows()
+
         
     })
 

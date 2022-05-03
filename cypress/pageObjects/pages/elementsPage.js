@@ -104,7 +104,6 @@ export class ElementsPage {
         }
 
         return this
-
     }
 
     //TODO: make more dynamic => selection based on argument
@@ -180,15 +179,37 @@ export class ElementsPage {
                         .should('not.exist')
                 }
             })
-        return this
 
+        return this
     }
 
     // Elements: Web Tables ==========>
 
-    webTable() {
+    webTableWrapper() {
+
+        cy.get('.web-tables-wrapper')
+            .should('be.visible')
+        return this
+    }
+
+    webTableRowCount(displayRowsNum) {
+
+        cy.get('[aria-label="rows per page"]')
+            .should('be.visible')
+            .select(`${displayRowsNum} rows`, { force: true })
 
         cy.get('.rt-table')
+            .should('be.visible')
+            .find('.rt-tbody')
+            .children('div[role="rowgroup"]')
+            .its('length')
+            .should('eq', displayRowsNum)
+        return this
+    }
+
+    webTableRows() {
+
+        cy.get('div.rt-table > div.rt-tbody > div > div.rt-tr')
             .should('be.visible')
     }
 
