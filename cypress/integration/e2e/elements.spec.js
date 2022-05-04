@@ -7,7 +7,7 @@ import { homePage } from "../../pageObjects/pages/homePage"
 
 describe('DemoQA: Elements', () => {
 
-    // change to befor?
+    // change to before?
     beforeEach(() => {
 
         cy.OpenHomePage()
@@ -82,7 +82,7 @@ describe('DemoQA: Elements', () => {
 
        elementsPage.webTableWrapper()
 
-       // select numbers of rows to be diaplayed and count visible rows (inclidung empty ones)
+       // select numbers of rows to be displayed and count visible rows (including empty ones)
        elementsPage.webTableRowCount(20)
 
        elementsPage.webTableRows()
