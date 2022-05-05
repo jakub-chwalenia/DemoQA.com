@@ -83,9 +83,13 @@ describe('DemoQA: Elements', () => {
        elementsPage.webTableWrapper()
 
        // select numbers of rows to be displayed and count visible rows (including empty ones)
-       elementsPage.webTableRowCount(20)
+       elementsPage.webTableChangeRowsPerPageAndCount(20)
 
        elementsPage.webTableRows()
+
+       elementsPage.webTableFindAnywhereInTable('Vega')
+
+       elementsPage.webTableFindInRowAndColumn('First Name')
 
         
     })
