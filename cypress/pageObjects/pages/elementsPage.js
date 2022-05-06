@@ -222,8 +222,8 @@ export class ElementsPage {
         return this
     }
 
-    // find value value in specific row & column
-    webTableFindInRowAndColumn(column) {
+    // find value value in specific column
+    webTableFindInRowAndColumn(column, searchedValue) {
 
         // grab entire table, grab columns, grab all rows, parent? children?
 
@@ -241,12 +241,14 @@ export class ElementsPage {
                 
                 // TODO: column index => always + 1 since there is no nth-child(0)
                 cy.get(`div.rt-table > div.rt-thead.-header > div > div:nth-child(${colIndex + 1})`)
-                    .should('contain', 'First Name')
+                    .should('contain', column)
                 
             })
         
         return this
     }
+
+    // return row and column in which searched value was found => actions based on this (?)
 
 }
 

@@ -72,7 +72,9 @@ describe('DemoQA: Elements', () => {
         // TODO
         // count rows
         // verify column names
+        // find empty row => for new data input
         // verify table data (based on JSON)
+        // verify that data is in specific column
         // add table data (based on JSON) => dynamic window
         // delete & modify data
         // use search
