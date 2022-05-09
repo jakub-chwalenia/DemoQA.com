@@ -19,6 +19,8 @@ export class ElementsPage {
             .within(($form) => {
 
                 cy.get('#userName').should('be.visible')
+                    .clear()
+                    .type()
                 cy.get('#userEmail').should('be.visible')
                 cy.get('#currentAddress').should('be.visible')
                 cy.get('#permanentAddress').should('be.visible')
@@ -241,20 +243,23 @@ export class ElementsPage {
                 const colIndex = columnText.indexOf(column)
                 console.log('column index is: ' + colIndex)
                 
-                // TODO: column index => always + 1 since there is no nth-child(0)
+                // column index (colIndex) => always + 1 since there is no nth-child(0)
                 cy.get(`div.rt-table > div.rt-thead.-header > div > div:nth-child(${colIndex + 1})`)
                     .should('contain', column)
+                // return colIndex
+
+            }).then( (colIndex) => {
+
+                for (let row = 1; row < displayRowsNum; row++) {
+
+                    cy.get(`div.rt-table > div.rt-tbody > div:nth-child(${row}) > div > div:nth-child(${colIndex + 1})`)
+                        .should('contain', searchedValue)
+                    console.log(row)
+                    return row
+    
+                }
 
             })
-
-        for (let row = 1; row < displayRowsNum; row++) {
-
-            cy.get(`div.rt-table > div.rt-tbody > div:nth-child(${row}) > div > div:nth-child(${colIndex + 1})`)
-                .should('contain', searchedValue)
-            console.log(row)
-            return row
-                
-        }
         
         return this
     }
