@@ -222,7 +222,7 @@ export class ElementsPage {
         return this
     }
 
-    // find value value in specific column
+    // find value value in specific column, return row number
     webTableFindInRowAndColumn(column, searchedValue) {
 
         // grab entire table, grab columns, grab all rows, parent? children?
