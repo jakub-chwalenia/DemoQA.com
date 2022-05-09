@@ -222,13 +222,20 @@ export class ElementsPage {
         return this
     }
 
+<<<<<<< HEAD
     // find value value in specific column, return row number
     webTableFindInRowAndColumn(column, searchedValue) {
+=======
+    // find value value in specific column
+    webTableFindInRowAndColumn(column, searchedValue, displayRowsNum) {
+>>>>>>> 5b23d81b7327f2ae3b13c73783048674224fe684
 
         // grab entire table, grab columns, grab all rows, parent? children?
 
         // div.rt-table > div.rt-tbody > div:nth-child(2) > div > div:nth-child(2)
         // first nth-child => row, second nth-child => column (!)
+
+        elementsPage.webTableChangeRowsPerPageAndCount(displayRowsNum)
 
         cy.get('div.rt-table > div.rt-thead.-header > div.rt-tr')
             .children()
@@ -242,8 +249,17 @@ export class ElementsPage {
                 // TODO: column index => always + 1 since there is no nth-child(0)
                 cy.get(`div.rt-table > div.rt-thead.-header > div > div:nth-child(${colIndex + 1})`)
                     .should('contain', column)
-                
+
             })
+
+        for (let row = 1; row < displayRowsNum; row++) {
+
+            cy.get(`div.rt-table > div.rt-tbody > div:nth-child(${row}) > div > div:nth-child(${colIndex + 1})`)
+                .should('contain', searchedValue)
+            console.log(row)
+            return row
+                
+        }
         
         return this
     }

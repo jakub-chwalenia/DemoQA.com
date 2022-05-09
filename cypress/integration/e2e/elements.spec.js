@@ -91,7 +91,8 @@ describe('DemoQA: Elements', () => {
 
        elementsPage.webTableFindAnywhereInTable('Vega')
 
-       elementsPage.webTableFindInRowAndColumn('First Name')
+       elementsPage.webTableFindInRowAndColumn('First Name', 'Cierra', 20)
+       // webTableFindInRowAndColumn(column, searchedValue, displayRowsNum)
 
         
     })
