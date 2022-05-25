@@ -28,6 +28,8 @@ import { basePage } from "../pageObjects/basePage"
 import { navBar } from "../pageObjects/components/navBar"
 import { elementsPage } from "../pageObjects/pages/elementsPage"
 import { homePage } from "../pageObjects/pages/homePage"
+import 'cypress-file-upload';
+require('cypress-downloadfile/lib/downloadFileCommand');
 
 Cypress.Commands.add('OpenHomePage', () => {
     

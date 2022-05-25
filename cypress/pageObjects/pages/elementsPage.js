@@ -1,3 +1,5 @@
+import 'cypress-file-upload';
+
 export class ElementsPage {
 
     // Elements: Text Box ==========>
@@ -265,6 +267,58 @@ export class ElementsPage {
     }
 
     // return row and column in which searched value was found => actions based on this (?)
+
+    // options: Double Click, Right Click, Click (Dynamic Click)
+    clickButton(buttonName) {
+
+        switch(buttonName) {
+
+            case 'Double Click':
+                cy.contains(buttonName).dblclick();
+                cy.contains(`You have done a ${buttonName.toLowerCase()}`)
+                break;
+
+            case 'Right Click':
+                cy.contains(buttonName).rightclick();
+                cy.contains(`You have done a ${buttonName.toLowerCase()}`)
+                break;
+            
+            case 'Click':
+                cy.contains(buttonName).click();
+                cy.contains(`You have done a dynamic click}`)
+                break;
+
+        }
+
+        return this
+    }
+
+    fileUpload(file) {
+
+        cy.get('#uploadFile')
+            .attachFile(file)
+        
+        cy.contains(`C:\\fakepath\\${file}`).should('be.visible')
+        cy.get('#uploadedFilePath')
+            .should('contain', `C:\\fakepath\\${file}`)
+        
+        return this
+
+    }
+
+    fileDownload() {
+
+        // let fileName = cy.get('#downloadButton').getAttribute('download') 
+        // console.log(fileName)
+
+        // cy.downloadFile('@fileURL','Downloads','cypress-download.jpeg')
+        // cy.readFile('./Downloads/cypress-download.jpeg')
+
+        cy.get('#downloadButton').click()
+        cy.readFile('cypress/downloads/sampleFile.jpeg')
+            .should('exist')
+
+    }
 
 }
 

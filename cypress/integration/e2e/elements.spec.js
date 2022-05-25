@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+/// <reference types="cypress-downloadfile"/>
 
 import { basePage } from "../../pageObjects/basePage"
 import { navBar } from "../../pageObjects/components/navBar"
@@ -65,7 +66,7 @@ describe('DemoQA: Elements', () => {
 
     })
 
-    it('Elements: Web Tables', () => {
+    it.skip('Elements: Web Tables', () => {
 
         basePage.navBarMenuNavigation('Elements', 'Web Tables', 'webtables')
 
@@ -97,5 +98,32 @@ describe('DemoQA: Elements', () => {
         
     })
 
+    // options: Double Click, Right Click, Click Me (Dynamic Click)
+    it('Elements: Buttons', () => {
+
+        basePage.navBarMenuNavigation('Elements', 'Buttons', 'buttons')
+
+        // basic click
+        elementsPage.clickButton('Double Click')
+
+        // double click
+        elementsPage.clickButton('Right Click')
+
+        // right click
+        elementsPage.clickButton('Click Me')
+
+    })
+
+    it('Elements: Upload and Download', () => {
+
+        basePage.navBarMenuNavigation('Elements', 'Upload and Download', 'upload-download')
+
+        // file upload via cypress-file-upload
+        elementsPage.fileUpload('testData.json')
+
+        // file download via cypress-downloadfile
+        elementsPage.fileDownload()
+
+    })
 
 })
