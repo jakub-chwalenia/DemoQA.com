@@ -260,7 +260,6 @@ export class ElementsPage {
                     return row
     
                 }
-
             })
         
         return this
@@ -293,23 +292,22 @@ export class ElementsPage {
         return this
     }
 
+    // select file from cypress/fixtures
     fileUpload(file) {
 
-        cy.get('#uploadFile')
-            .attachFile(file)
+        cy.get('#uploadFile').attachFile(file)
         
         cy.contains(`C:\\fakepath\\${file}`).should('be.visible')
-        cy.get('#uploadedFilePath')
-            .should('contain', `C:\\fakepath\\${file}`)
+        cy.get('#uploadedFilePath').should('contain', `C:\\fakepath\\${file}`)
         
         return this
-
     }
 
     fileDownload() {
 
-        // let fileName = cy.get('#downloadButton').getAttribute('download') 
-        // console.log(fileName)
+        cy.get('#downloadButton')
+            .invoke('attr', 'href')
+            .should('contain', 'data:image/jpeg;base64')
 
         // cy.downloadFile('@fileURL','Downloads','cypress-download.jpeg')
         // cy.readFile('./Downloads/cypress-download.jpeg')
@@ -317,7 +315,50 @@ export class ElementsPage {
         cy.get('#downloadButton').click()
         cy.readFile('cypress/downloads/sampleFile.jpeg')
             .should('exist')
+        
+        return this
+    }
 
+    linksVerification() {
+
+        // TODO
+    }
+
+    newTabLink() {
+
+        // TODO
+    }
+
+    // TODO: split to separate functions (?) 
+    dynamicPropertiesVerification() {
+
+        // Will enable after 5 seconds => property change
+
+        cy.get('#visibleAfter').should('not.exist')
+
+        cy.get('#enableAfter')
+            .should('be.visible')
+            .should('contain', 'Will enable 5 seconds')
+            .invoke('attr', 'disabled')
+            .should('exist')
+
+        cy.contains('This text has random Id').should('be.visible')
+
+
+        // Color change => #dc3545 == rgb(220, 53, 69)
+
+        cy.wait(5000)
+
+        cy.get('#colorChange')
+            .should('have.css', 'color', 'rgb(220, 53, 69)')
+            .invoke('attr', 'class')
+            .should('contain', 'text-danger')
+
+        // Visible After 5 Seconds
+
+        cy.get('#visibleAfter').should('be.visible')
+
+        return this
     }
 
 }

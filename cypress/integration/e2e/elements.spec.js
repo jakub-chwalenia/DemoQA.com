@@ -126,4 +126,26 @@ describe('DemoQA: Elements', () => {
 
     })
 
+    it('Elements: Links', () => {
+
+        basePage.navBarMenuNavigation('Elements', 'Links', 'links')
+        // TODO
+        
+    })
+
+    it('Elements: Broken Links - Images', () => {
+
+        basePage.navBarMenuNavigation('Elements', 'Broken Links - Images', 'broken')
+        // TODO
+
+    })
+
+    it('Elements: Dynamic Properties', () => {
+
+        basePage.navBarMenuNavigation('Elements', 'Dynamic Properties', 'dynamic-properties')
+
+        elementsPage.dynamicPropertiesVerification()
+
+    })
+
 })
