@@ -94,7 +94,6 @@ describe('DemoQA: Elements', () => {
 
        elementsPage.webTableFindInRowAndColumn('First Name', 'Cierra', 20)
        // webTableFindInRowAndColumn(column, searchedValue, displayRowsNum)
-
         
     })
 
@@ -126,17 +125,37 @@ describe('DemoQA: Elements', () => {
 
     })
 
-    it('Elements: Links', () => {
+    it('Elements: Links - New Tab', () => {
 
         basePage.navBarMenuNavigation('Elements', 'Links', 'links')
-        // TODO
         
+        // options: simpleLink, dynamicLink
+        elementsPage.linkToNewTab('simpleLink')
+        elementsPage.linkToNewTab('dynamicLink')
+
+    })
+
+    it('Elements: Links - API calls', () => {
+
+        basePage.navBarMenuNavigation('Elements', 'Links', 'links')
+
+        // options: Created, No Content, Moved, Bad Request, Unauthorized, Forbidden, Not Found
+        elementsPage.apiCallsLink('Created')
+        elementsPage.apiCallsLink('No Content')
+        elementsPage.apiCallsLink('Moved')
+        elementsPage.apiCallsLink('Bad Request')
+        elementsPage.apiCallsLink('Unauthorized')
+        elementsPage.apiCallsLink('Forbidden')
+        elementsPage.apiCallsLink('Not Found')
+
     })
 
     it('Elements: Broken Links - Images', () => {
 
         basePage.navBarMenuNavigation('Elements', 'Broken Links - Images', 'broken')
-        // TODO
+        
+        elementsPage.validLinkVerification()
+        elementsPage.invalidLinkVerification()
 
     })
 
@@ -147,5 +166,4 @@ describe('DemoQA: Elements', () => {
         elementsPage.dynamicPropertiesVerification()
 
     })
-
 })

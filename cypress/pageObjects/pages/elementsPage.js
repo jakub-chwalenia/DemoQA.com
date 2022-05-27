@@ -14,7 +14,7 @@ export class ElementsPage {
         return this
     }
 
-    // TODO: input based on arguments
+    // TODO: input based on arguments (?)
     formContainerWithin() {
 
         cy.get('.text-field-container')
@@ -310,7 +310,7 @@ export class ElementsPage {
             .should('contain', 'data:image/jpeg;base64')
 
         // cy.downloadFile('@fileURL','Downloads','cypress-download.jpeg')
-        // cy.readFile('./Downloads/cypress-download.jpeg')
+        // cy.readFile('./downloads/cypress-download.jpeg')
 
         cy.get('#downloadButton').click()
         cy.readFile('cypress/downloads/sampleFile.jpeg')
@@ -319,21 +319,60 @@ export class ElementsPage {
         return this
     }
 
-    linksVerification() {
+    validLinkVerification() {
 
-        // TODO
+        cy.contains('Valid image').should('be.visible')
+        cy.contains('Broken image').should('be.visible')
+
+        cy.get('a').contains('Click Here for Valid Link').click()
+        cy.url().should('eq', 'https://demoqa.com/')
+        cy.go('back')
+
+        return this
     }
 
-    newTabLink() {
+    invalidLinkVerification() {
 
         // TODO
+        cy.contains('Valid image').should('be.visible')
+        cy.contains('Broken image').should('be.visible')
+
+        cy.get('a').contains('Click Here for Broken Link').click()
+        cy.url().should('contain', '/status_codes/500')
+        cy.contains('This page returned a 500 status code')
+        cy.go('back')
+
+        return this
+    }
+
+
+    // remove _blank attr to open "new tab" target in the same single tab
+    // options: simpleLink, dynamicLink
+    linkToNewTab(linkName) {
+
+        cy.get(`#${linkName}`)
+            .invoke('removeAttr', 'target').click() // remove target="_blank" attr
+        cy.url()
+            .should('eq', 'https://demoqa.com/')
+        cy.go('back')
+
+        return this
+    }
+    
+    // options: Created, No Content, Moved, Bad Request, Unauthorized, Forbidden, Not Found
+    // TODO: add status code verification (?)
+    apiCallsLink(linkName) {
+
+        cy.contains(linkName).click()
+        cy.contains(`and status text ${linkName}`).should('be.visible')
+
+        return this
     }
 
     // TODO: split to separate functions (?) 
     dynamicPropertiesVerification() {
 
         // Will enable after 5 seconds => property change
-
         cy.get('#visibleAfter').should('not.exist')
 
         cy.get('#enableAfter')
@@ -344,9 +383,7 @@ export class ElementsPage {
 
         cy.contains('This text has random Id').should('be.visible')
 
-
         // Color change => #dc3545 == rgb(220, 53, 69)
-
         cy.wait(5000)
 
         cy.get('#colorChange')
@@ -355,7 +392,6 @@ export class ElementsPage {
             .should('contain', 'text-danger')
 
         // Visible After 5 Seconds
-
         cy.get('#visibleAfter').should('be.visible')
 
         return this
