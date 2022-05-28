@@ -383,7 +383,7 @@ export class ElementsPage {
 
         cy.contains('This text has random Id').should('be.visible')
 
-        // Color change => #dc3545 == rgb(220, 53, 69)
+        // Color change => #dc3545 == rgb(220, 53, 69) => # to rgb converter function?
         cy.wait(5000)
 
         cy.get('#colorChange')

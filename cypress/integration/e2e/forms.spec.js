@@ -29,7 +29,7 @@ describe('DemoQA: Forms', () => {
         // TODO
         basePage.navBarMenuNavigation('Forms', 'Practice Form', 'automation-practice-form')
 
-        formsPage.practiceForm('Male', 'Sports')
+        formsPage.practiceFormSimpleSelection('Male', 'Sports', 'sampleFile.jpeg')
 
     })
 })
