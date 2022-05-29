@@ -16,18 +16,9 @@ export class FormsPage {
                     })
 
                 cy.get('#userNumber').type('5559875431')
-                //cy.get('#dateOfBirthInput')
-                    //.invoke('attr', 'value', '')
-                    //.should('have.attr', 'value', '')
-                    //.invoke('setAttr', 'value')
-                    //.type('06 Jun 2022') // TODO: placeholder attr => remove? / selection via date picker
 
                 cy.get('#dateOfBirthInput')
-                    //.removeAttr('value')
-                    //.type('{selectall}{backspace}')
                     .type('{selectall}06 Jun 2022')
-                
-                //cy.get('#dateOfBirthInput').type('06 Jun 2022')
                 
                 cy.get('#subjectsContainer').type('Maths{enter}')
 
@@ -45,12 +36,13 @@ export class FormsPage {
 
                 cy.get('#currentAddress').type('Random Address')
 
-                cy.get('#state').select('NCR')
-                cy.get('#city').select('Gurgaon')
+                cy.get('#state').type('NCR{enter}')
+                cy.get('#city').type('Gurgaon{enter}')
 
                 cy.get('#submit').click()
 
                 // TODO: verify that input values are GREEN + test for RED inputs
+                // TODO: "Thanks for submitting the form" + data verification in modal window
 
             })
     }

@@ -345,7 +345,6 @@ export class ElementsPage {
         return this
     }
 
-
     // remove _blank attr to open "new tab" target in the same single tab
     // options: simpleLink, dynamicLink
     linkToNewTab(linkName) {
