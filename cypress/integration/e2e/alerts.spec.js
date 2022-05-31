@@ -26,10 +26,9 @@ describe('DemoQA: Alerts, Frames & Windows', () => {
 
     it('Forms: Browser Windows', () => {
 
-        // TODO
         basePage.navBarMenuNavigation('Alerts, Frame & Windows', 'Browser Windows', 'browser-windows')
 
-        // TODO
+        // TODO: implement stubs (?)
         alertsFramesWindows.newTab()
         alertsFramesWindows.newWindow()
         // alertsFramesWindows.newWindowMessage()

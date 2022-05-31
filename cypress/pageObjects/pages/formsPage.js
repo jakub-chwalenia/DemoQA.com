@@ -39,7 +39,32 @@ export class FormsPage {
                 cy.get('#state').type('NCR{enter}')
                 cy.get('#city').type('Gurgaon{enter}')
 
+                // TODO: to be implemented (!)
+                // cy.contains('.select2-results__option', 'Clementine Bauch').should('be.visible').click()
+                // // confirm Select2 widget renders the name
+                // cy.get('#select2-user-container').should('have.text', 'Clementine Bauch')
+
                 cy.get('#submit').click()
+
+                cy.window().then(win => {
+
+                    // TODO
+
+                    cy.get('.modal-header').should('be.visible')
+
+                    cy.contains('Thanks for submitting the form').should('be.visible')
+
+                    cy.get('body > div.fade.modal.show > div > div')
+                        .wait(5000)
+                        .should('be.visible')
+                    
+                    cy.get('div.fade.modal.show > div > div > div.modal-body > div > table')
+                        .should('exist')
+                    
+                    cy.contains('Close').click({force: true})
+
+                })
+
 
                 // TODO: verify that input values are GREEN + test for RED inputs
                 // TODO: "Thanks for submitting the form" + data verification in modal window

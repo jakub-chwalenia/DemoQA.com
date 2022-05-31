@@ -365,6 +365,44 @@ export class ElementsPage {
         cy.contains(linkName).click()
         cy.contains(`and status text ${linkName}`).should('be.visible')
 
+        switch (linkName) {
+
+            case 'Created':
+
+                cy.contains('Link has responded with staus 201 and status text Created')
+                break;
+
+            case 'No Content':
+
+                cy.contains('Link has responded with staus 204 and status text No Content')
+                break;
+            
+            case 'Moved':
+
+                cy.contains('Link has responded with staus 301 and status text Moved Permanently')
+                break;
+
+            case 'Bad Request':
+
+                cy.contains('Link has responded with staus 400 and status text Bad Request')
+                break;
+            
+            case 'Unauthorized':
+
+                cy.contains('Link has responded with staus 401 and status text Unauthorized')
+                break;
+
+            case 'Forbidden':
+
+                cy.contains('Link has responded with staus 403 and status text Forbidden')
+                break;
+            
+            case 'Not Found':
+
+                cy.contains('Link has responded with staus 404 and status text Not Found')
+                break;
+        }
+
         return this
     }
 
@@ -382,7 +420,7 @@ export class ElementsPage {
 
         cy.contains('This text has random Id').should('be.visible')
 
-        // Color change => #dc3545 == rgb(220, 53, 69) => # to rgb converter function?
+        // Color change => #dc3545 == rgb(220, 53, 69) => # TODO: to rgb converter function?
         cy.wait(5000)
 
         cy.get('#colorChange')
