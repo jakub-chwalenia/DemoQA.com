@@ -160,7 +160,6 @@ describe('DemoQA: Elements', () => {
     it('Elements: Dynamic Properties', () => {
 
         basePage.navBarMenuNavigation('Elements', 'Dynamic Properties', 'dynamic-properties')
-
         elementsPage.dynamicPropertiesVerification()
 
     })
